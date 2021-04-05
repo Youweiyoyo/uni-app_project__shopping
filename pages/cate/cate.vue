@@ -1,5 +1,7 @@
 <template>
   <view >
+    <!-- 使用自定义的搜索组件 -->
+    <my-search :radius=15 :bgcolor="'#007AFF'" @click='gotoSearch'></my-search>
     <view class="scroll-view-continer">
       <!-- 左侧的盒子 -->
       <scroll-view scroll-y="true" :style="{height:wh + 'px'}" class="left-scroll">
@@ -32,7 +34,6 @@
   export default {
     data() {
       return {
-      // 窗口的可用高度 = 屏幕高度 - tabbar高度
       wh:0,  // 当前设备的可用高度
       CateList:[] ,// 一级分类信息
       active:0 ,  // 控制激活项的变量
@@ -42,7 +43,8 @@
     },
    async onLoad(){
       const Info = await uni.getSystemInfo()  // 获取用户的设备型号
-      this.wh = Info[1].windowHeight  // 拿到屏幕的可用高度
+       // 可用高度 = 屏幕高度 - navigationBar高度 - tabBar高度 - 自定义的search组件高度
+      this.wh = Info[1].windowHeight - 50// 拿到屏幕的可用高度
       this.getCateInfo()
     },
     methods:{
@@ -64,6 +66,12 @@
       gotoGoodList(item3){
         uni.navigateTo({
           url:'../../subpkg/good_list/good_list?cid='+item3.cat_id
+        })
+      },
+      // 跳转倒search页面
+      gotoSearch(){
+        uni.navigateTo({
+          url:'../../subpkg/search/search'
         })
       }
     }
