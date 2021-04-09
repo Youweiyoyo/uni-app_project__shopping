@@ -28,6 +28,7 @@
       }
     },
     filters:{
+      // 保留两位小数过滤器
       tofixed(num){
         return Number(num).toFixed(2)
       }
