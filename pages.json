@@ -74,7 +74,7 @@
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "苏州街",
 		"navigationBarBackgroundColor": "#007AFF",
-		"backgroundColor": "#ff0066"
+		"backgroundColor": "#e4e4e4"
 	},
   "tabBar":{
     "selectedColor":"#ff0066",
