@@ -39,6 +39,7 @@
 </template>
 
 <script>
+import barMixins from '@/mixins/tabBar_badge.js'
 	export default {
 		data() {
 			return {
@@ -52,6 +53,7 @@
       this.getnavList()
       this.getfloorList()
     },
+    mixins:[barMixins],
     methods:{
       // tabBar
       async getList(){
