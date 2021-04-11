@@ -1,21 +1,29 @@
 <template>
-  <view>
-    <my-address></my-address>
-    <!-- 购物车title -->
-    <view class="cartTitle">
-      <uni-icons type="shop" size="18"></uni-icons>
-      <text class="catrText">购物车</text>
+  <view >
+    <view class="padding" v-if="cart.length !== 0 ">
+      <my-address></my-address>
+      <!-- 购物车title -->
+      <view class="cartTitle">
+        <uni-icons type="shop" size="18"></uni-icons>
+        <text class="catrText">购物车</text>
+      </view>
+      <uni-swipe-action>
+        <block v-for="(item,index) in cart" :key="index">
+          <uni-swipe-action-item @click="onClick(item)" :right-options="options">
+            <my-goods :goods="item" :radio="true" @radio-change="radioChangeHandler" :is-show-num="true"
+              @num-change="numChangeHandler"></my-goods>
+          </uni-swipe-action-item>
+        </block>
+      </uni-swipe-action>
+      <my-settle></my-settle>
     </view>
-    <uni-swipe-action>
-      <block v-for="(item,index) in cart" :key="index">
-        <uni-swipe-action-item @click="onClick(item)" :right-options="options">
-          <my-goods :goods="item" :radio="true" @radio-change="radioChangeHandler" :is-show-num="true"
-            @num-change="numChangeHandler"></my-goods>
-        </uni-swipe-action-item>
-      </block>
-    </uni-swipe-action>
-    <my-settle></my-settle>
+      <!-- 空白购物车区域 -->
+      <view class="empty-cart" v-else>
+        <image src="../../static/logo.png" class="empty-img"></image>
+        <text class="tip-text">空空如也~</text>
+      </view>
   </view>
+  
 </template>
 
 <script>
@@ -58,6 +66,9 @@
 </script>
 
 <style lang="scss">
+  .padding{
+    padding-bottom: 50px;
+  }
   .cartTitle {
     height: 40px;
     display: flex;
@@ -70,4 +81,21 @@
       margin-left: 10px;
     }
   }
+  .empty-cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 150px;
+
+  .empty-img {
+    width: 90px;
+    height: 90px;
+  }
+
+  .tip-text {
+    font-size: 12px;
+    color: gray;
+    margin-top: 15px;
+  }
+}
 </style>
