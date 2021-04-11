@@ -14,6 +14,7 @@
         </uni-swipe-action-item>
       </block>
     </uni-swipe-action>
+    <my-settle></my-settle>
   </view>
 </template>
 
