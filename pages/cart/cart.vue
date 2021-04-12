@@ -15,6 +15,7 @@
           </uni-swipe-action-item>
         </block>
       </uni-swipe-action>
+      <!-- 结算组件 -->
       <my-settle></my-settle>
     </view>
       <!-- 空白购物车区域 -->
